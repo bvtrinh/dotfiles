@@ -10,52 +10,12 @@ mysql-server
 postgresql
 sqlite3
 zathura
-
-# https://github.com/haikarainen/light/archive/refs/tags/v1.2.2.tar.gz
-light
-
-# xrandr
 x11-xserver-utils
 arandr
-
-# https://nodejs.org/dist/v14.16.1/node-v14.16.1.tar.gz
-nodejs 
-
-# https://zoom.us/client/latest/zoom_amd64.deb
-zoom 
-
-# https://discord.com/api/download?platform=linux&format=deb
-discord
-
-# https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64
-vscode
-
-# https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm64.tgz
-ngrok
-# mv ./ngrok /usr/local/bin/ngrok
-
-# git clone https://github.com/pavanjadhaw/betterlockscreen
-# cd betterlockscreen
-# cp betterlockscreen /usr/local/bin
-betterlockscreen
-
-
 python3
 python3-pip
-python -m pip install --user virtualenv
-
-# wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-# sudo dpkg -i google-chrome-stable_current_amd64.deb
-
-# sudo snap install postman
-postman
-
 gimp
-
-# deluge
-sudo apt install software-properties-common
-sudo add-apt-repository ppa:deluge-team/stable
-sudo apt install deluge
-
-# vlc
-sudo apt install vlc vlc-plugin-access-extra libbluray-bdj libdvdcss2
+vlc
+vlc-plugin-access-extra
+libbluray-bdj
+libdvdcss2
