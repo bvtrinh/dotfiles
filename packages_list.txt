@@ -2,6 +2,11 @@ curl
 vim
 zsh
 i3
+yad
+jq
+feh
+automake
+autoconf
 polybar
 compton
 synclient
