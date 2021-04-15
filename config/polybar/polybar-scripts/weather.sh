@@ -24,7 +24,8 @@ get_icon() {
     echo $icon
 }
 
-KEY="0f92cc5ae0ec9fed3c286a8ff0959c4d"
+KEY_FILE=~/.dotfiles/config/polybar/polybar-scripts/weather_key.txt
+read KEY < $KEY_FILE
 CITY="6173331"
 UNITS="metric"
 SYMBOL="°"
