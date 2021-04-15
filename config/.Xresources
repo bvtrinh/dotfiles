@@ -1,0 +1,102 @@
+! Colorscheme
+
+!! Appearance
+URxvt.termName: rxvt-unicode-256color
+URxvt.scrollBar: false
+URxvt.background: black
+URxvt.foreground: white
+URxvt.font: xft:DejaVuSansMono Nerd Font:pixelsize=14:minspace=False, xft:DejaVu Sans:pixelsize=13
+URxvt.boldFont: xft:DejaVuSansMono:Bold:pixelsize=14:minspace=False, xft:DejaVu Sans:pixelsize=13
+Urxvt.letterSpace: -1
+URxvt.borderless: 0
+
+!! Enable Shift-PageUp/Down in screen
+URxvt.secondaryScroll: true
+
+!! Larger history limit
+URxvt.saveLines: 1000000
+
+!! Perl extensions
+URxvt.perl-ext-common: default,matcher,font-size
+
+!! Open urls in browser with Control-Click
+URxvt.urlLauncher: /usr/bin/google-chrome
+URxvt.matcher.button: C1
+
+!! Change font size on Control-Plus/Minus
+URxvt.keysym.Control-0x2b: perl:font-size:increase
+URxvt.keysym.Control-0x2d: perl:font-size:decrease
+
+URxvt.keysym.M-C-1: command:\033]710;suxuseuro\007\033]711;suxuseuro\007
+URxvt.keysym.M-C-2: command:\033]710;9x15bold\007\033]711;9x15bold\007
+URxvt.cursorBlink: 1
+
+!! Text editor background
+#define S_base03        #002b36
+!! Background dark blue
+#define S_base02        #073642
+!! grey
+#define S_base01        #586e75
+!! grey
+#define S_base00        #657b83
+!! grey
+#define S_base0         #839496
+!! grey
+#define S_base1         #93a1a1
+!! cream
+#define S_base2         #EEE8D5
+!! cream
+#define S_base3         #fdf6e3
+
+*background:            S_base03
+*foreground:            S_base0
+*fadeColor:             S_base03
+*cursorColor:           white
+*pointerColorBackground:S_base01
+*pointerColorForeground:S_base1
+
+#define S_yellow        #b58900
+#define S_orange        #cb4b16
+#define S_red           #dc322f
+#define S_magenta       #d33682
+#define S_violet        #6c71c4
+#define S_blue          #268bd2
+#define S_cyan          #00FFFF
+#define S_green         #74D212
+
+!! black dark/light
+*color0:                S_base03
+*color8:                S_base02
+
+!! red dark/light
+*color1:                S_red
+*color9:                S_orange
+
+!! green dark/light
+! C++ keywords
+*color2:                #859900
+!! Comments
+*color10:               S_green
+
+!! yellow dark/light constants
+*color3:                S_yellow
+*color11:               S_yellow
+
+!! blue dark/light
+*color4:                S_blue
+*color12:               S_base1
+
+!! magenta dark/light
+*color5:                S_violet
+*color13:               S_magenta
+
+!! cyan dark/light
+!! Quotation marks
+*color6:                #2B9E9B
+!! Directory in shell
+*color14:               S_cyan
+
+!! white dark/light
+*color7:                S_base3
+*color15:               S_base2
+

@@ -2,6 +2,8 @@
 
 # Setup constants
 INSTALL_DIR=~/tmp/install;
+VSCODE_FILE=vscode_extensions.txt;
+VIM_PKG_DIR=~/.vim/bundle/;
 PACKAGES_FILE=package_list.txt;
 ALL_FLAG=0;
 
@@ -42,10 +44,13 @@ ngrok_install() {
     mv ngrok /usr/local/bin/;
 }
 
-# TODO: verify commands
 light_install() {
     wget -O light-1.2.2.tar.gz https://github.com/haikarainen/light/archive/refs/tags/v1.2.2.tar.gz;
     tar -xf light-1.2.2.tar.gz;
+    cd light-1.2.2;
+    ./autogen.sh;
+    ./configure && make;
+    make install;
 }
 
 betterlockscreen_install() {
@@ -72,10 +77,20 @@ virtualenv_install() {
     python -m pip install --user virtualenv;
 }
 
-# TODO: setup extensions and settings.json
 vscode_install() {
     wget -O vscode.deb https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64;
     apt install ./vscode.deb;
+    # FIXME: Might need to do a loop here
+    xargs code --install-extension < $VSCODE_FILE;
+}
+
+vim_setup() {
+    mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+    curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim;
+
+    # Install plugins
+    git clone https://github.com/vim-airline/vim-airline $VIM_PKG_DIR; 
+    git clone git://github.com/altercation/vim-colors-solarized.git $VIM_PKG_DIR;
 }
 
 # Missing: light, vscode setup
@@ -91,6 +106,7 @@ software_install() {
 symlink_setup() {
     ln -s ~/.dotfiles/base/.zshrc ~/.zshrc;
     ln -s ~/.dotfiles/base/.vimrc ~/.vimrc;
+    ln -s ~/.dotfiles/base/settings.json ~/.config/Code/User/settings.json;
     ln -s ~/.dotfiles/config ~/.config;
 }
 
@@ -105,6 +121,7 @@ main() {
     # Update, upgrade and install packages specified in $PACKAGES_FILE
     apt update && apt upgrade;
     xargs apt install < $PACKAGES_FILE;
+    vim_setup || error "Unable to setup vim plugins."
 
     mkdir -p $INSTALL_DIR && cd $INSTALL_DIR;
 
