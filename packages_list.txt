@@ -23,3 +23,6 @@ vlc-plugin-access-extra
 libbluray-bdj
 libdvd-pkg
 texlive
+libgl1-mesa-glx
+libegl1-mesa
+libxcb-xtest0

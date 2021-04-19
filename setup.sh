@@ -54,6 +54,11 @@ betterlockscreen_install() {
     cp betterlockscreen/betterlockscreen /usr/local/bin;
 }
 
+polybar_install() {
+    git clone https://github.com/polybar/polybar.git
+    
+}
+
 google_chrome_install() {
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb;
     apt install -y ./google-chrome-stable_current_amd64.deb;

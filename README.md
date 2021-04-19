@@ -38,4 +38,9 @@
 - deluge
 - vlc
 
+# Pre reqs
+
+- setup ssh keys
+  - configure them within your shell
+
 ## Background Images
