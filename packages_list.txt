@@ -7,9 +7,8 @@ jq
 feh
 automake
 autoconf
-polybar
 compton
-synclient
+xserver-xorg-input-synaptics
 mysql-server
 postgresql
 sqlite3
@@ -22,5 +21,5 @@ gimp
 vlc
 vlc-plugin-access-extra
 libbluray-bdj
-libdvdcss2
+libdvd-pkg
 texlive
