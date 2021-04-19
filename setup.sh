@@ -1,11 +1,15 @@
 #! /bin/bash
 
 # Setup constants
-HOME=/home/ubuntu;
-INSTALL_DIR=~/tmp/install;
-VSCODE_FILE=~/.dotfiles/vscode_extensions.txt;
-VIM_PKG_DIR=~/.vim/bundle;
-PACKAGES_FILE=packages_list.txt;
+# TODO: setup current user command?
+# i.e. sudo ./setup.sh -a -u $USER
+USER=ubuntu;
+HOME=/home/$USER;
+REPO_DIR=$HOME/.dotfiles;
+INSTALL_DIR=$HOME/tmp/install;
+VSCODE_FILE=$REPO_DIR/vscode_extensions.txt;
+VIM_PKG_DIR=$HOME/.vim/bundle;
+PACKAGES_FILE=$REPO_DIR/packages_list.txt;
 ALL_FLAG=0;
 
 while getopts ":ha" opt; do
@@ -80,7 +84,7 @@ virtualenv_install() {
 
 vscode_install() {
     snap install --classic code;
-    cat $VSCODE_FILE | xargs -L1 code --user-data-dir ubuntu --install-extension < $VSCODE_FILE;
+    cat $VSCODE_FILE | xargs -L1 code --user-data-dir $USER --install-extension < $VSCODE_FILE;
 }
 
 vim_setup() {
@@ -132,10 +136,9 @@ main() {
     #symlink_setup || error "Unable to setup symlinks.";
     update_shell || error "Unable to update shell";
 
-    echo "No errors! Hurray!";
-    cd ..;
+    echo "No errors. Hurray!";
+    cd $REPO_DIR;
     exit 0;
 }
 
 main;
-
