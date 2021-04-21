@@ -60,7 +60,6 @@ betterlockscreen_install() {
 
 polybar_install() {
     git clone https://github.com/polybar/polybar.git
-    
 }
 
 google_chrome_install() {
@@ -74,8 +73,8 @@ postman_install() {
 
 deluge_install() {
     apt install software-properties-common;
-    add-apt-repository ppa:deluge-team/stable;
-    apt install deluge;
+    add-apt-repository -y ppa:deluge-team/stable;
+    apt install -y deluge;
 }
 
 virtualenv_install() {
@@ -96,7 +95,7 @@ vim_setup() {
     git clone git://github.com/altercation/vim-colors-solarized.git $VIM_PKG_DIR/vim-colors-solarized;
 }
 
-# Missing: light, deluge, postman, virtualenv, betterlockscreen
+# Missing: light, virtualenv, betterlockscreen
 software_install() {
     node_install;
     discord_install;
@@ -104,6 +103,8 @@ software_install() {
     ngrok_install;
     google_chrome_install;
     vscode_install;
+    deluge_install;
+    postman_install;
 }
 
 symlink_setup() {
@@ -137,8 +138,8 @@ main() {
         software_install;
     fi
 
-    symlink_setup || error "Unable to setup symlinks.";
-    update_shell || error "Unable to update shell";
+    #symlink_setup || error "Unable to setup symlinks.";
+    #update_shell || error "Unable to update shell";
 
     echo "No errors. Hurray!";
     cd $REPO_DIR;
