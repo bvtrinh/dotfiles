@@ -107,16 +107,18 @@ software_install() {
 }
 
 symlink_setup() {
-    ln -s $REPO_DIR/base/.zshrc ~/.zshrc;
-    ln -s $REPO_DIR/base/.vimrc ~/.vimrc;
-    ln -s $REPO_DIR/base/basic.zsh-theme ~/.oh-my-zsh/custom/theme/basic.zsh-theme
-    ln -s $REPO_DIR/base/settings.json ~/.config/Code/User/settings.json;
-    ln -s $REPO_DIR/config ~/.config;
+    ln -sf $REPO_DIR/base/.zshrc ~/.zshrc;
+    ln -sf $REPO_DIR/base/.vimrc ~/.vimrc;
+    ln -sf $REPO_DIR/base/basic.zsh-theme ~/.oh-my-zsh/custom/themes/basic.zsh-theme
+    ln -sf $REPO_DIR/base/settings.json ~/.config/Code/User/settings.json;
+    ln -sf $REPO_DIR/config ~/.config;
 }
 
 update_shell() {
     # oh-my-zsh
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)";
+    # zplugin
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
     # Need to logout for this to take effect
     chsh -s /usr/bin/zsh "$USER" >/dev/null 2>&1;
 }

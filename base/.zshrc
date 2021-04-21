@@ -1,8 +1,8 @@
 # Path to your oh-my-zsh installation.
-export ZSH="/home/ttrinh/.oh-my-zsh"
+export ZSH="/home/$USER/.oh-my-zsh"
 
 ### Added by Zplugin's installer
-source '/home/ttrinh/.zplugin/bin/zplugin.zsh'
+source "/home/$USER/.zplugin/bin/zplugin.zsh"
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 
@@ -53,4 +53,4 @@ alias sqlite="sqlite3"
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Documents/Code
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-source $HOME/.local/bin/virtualenvwrapper.sh
+#source $HOME/.local/bin/virtualenvwrapper.sh
