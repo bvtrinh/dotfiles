@@ -88,8 +88,8 @@ vscode_install() {
 }
 
 vim_setup() {
-    mkdir -p ~/.vim/autoload ~/.vim/bundle;
-    curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim;
+    mkdir -p $HOME/.vim/autoload $HOME/.vim/bundle;
+    curl -LSso $HOME/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim;
 
     # Install plugins
     git clone https://github.com/vim-airline/vim-airline $VIM_PKG_DIR/vim-airline; 
@@ -107,16 +107,18 @@ software_install() {
 }
 
 symlink_setup() {
-    ln -s ~/.dotfiles/base/.zshrc ~/.zshrc;
-    ln -s ~/.dotfiles/base/.vimrc ~/.vimrc;
-    ln -s ~/.dotfiles/base/settings.json ~/.config/Code/User/settings.json;
-    ln -s ~/.dotfiles/config ~/.config;
+    ln -s $REPO_DIR/base/.zshrc ~/.zshrc;
+    ln -s $REPO_DIR/base/.vimrc ~/.vimrc;
+    ln -s $REPO_DIR/base/basic.zsh-theme ~/.oh-my-zsh/custom/theme/basic.zsh-theme
+    ln -s $REPO_DIR/base/settings.json ~/.config/Code/User/settings.json;
+    ln -s $REPO_DIR/config ~/.config;
 }
 
 update_shell() {
     # oh-my-zsh
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)";
-    chsh -s /bin/zsh ubuntu >/dev/null 2>&1;
+    # Need to logout for this to take effect
+    chsh -s /usr/bin/zsh "$USER" >/dev/null 2>&1;
 }
 
 
@@ -133,7 +135,7 @@ main() {
         software_install;
     fi
 
-    #symlink_setup || error "Unable to setup symlinks.";
+    symlink_setup || error "Unable to setup symlinks.";
     update_shell || error "Unable to update shell";
 
     echo "No errors. Hurray!";
