@@ -15,7 +15,7 @@ autoload -Uz promptinit
 promptinit
 
 # Theme for git
-ZSH_THEME="tylertrinh"
+ZSH_THEME="basic"
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
