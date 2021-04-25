@@ -122,14 +122,14 @@ fonts_install() {
 
     cd $INSTALL_DIR;
 
-    mkdir -p $HOME_DIR/.local/share/fonts;
+    mkdir -p $HOME/.local/share/fonts;
 
     git clone https://github.com/erikflowers/weather-icons.git;
-    cd weather-icons && mv font/weathericons-regular-webfont.ttf $HOME_DIR/.local/share/fonts;
+    cd weather-icons && mv font/weathericons-regular-webfont.ttf $HOME/.local/share/fonts;
 
     cd $INSTALL_DIR;
     git clone https://github.com/FortAwesome/Font-Awesome.git
-    mv Font-Awesome/otfs/'Font Awesome 5*' $HOME_DIR/.local/share/fonts;
+    mv Font-Awesome/otfs/'Font Awesome 5*' $HOME/.local/share/fonts;
 
     fc-cache -f -v;
     cd $INSTALL_DIR;
@@ -187,7 +187,7 @@ main() {
 
     mkdir -p $INSTALL_DIR;
     cd $INSTALL_DIR;
-    software_install;
+    # software_install;
 
     if [[ "$ALL_FLAG" == 1 ]]; then
         poweruser_setup;
