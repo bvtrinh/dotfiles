@@ -30,3 +30,17 @@ libasound2-dev
 libpulse-dev
 i3-wm
 libcurl4-openssl-dev
+imagemagick
+autoconf
+gcc 
+make 
+pkg-config 
+libpam0g-dev
+libfontconfig1-dev 
+libev-dev
+libx11-xcb-dev 
+libxcb-xinerama0-dev 
+libxcb-util-dev 
+libxkbcommon-dev 
+libxkbcommon-x11-dev 
+libjpeg-dev
