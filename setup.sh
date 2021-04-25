@@ -53,13 +53,24 @@ light_install() {
     make install;
 }
 
+# TODO: Install dependencies
 betterlockscreen_install() {
     git clone https://github.com/pavanjadhaw/betterlockscreen;
     cp betterlockscreen/betterlockscreen /usr/local/bin;
+
+    # Lock when closing laptop
+    ln -sf $REPO_DIR/base/betterlockscreen@.service /etc/systemd/system;
+    chmod +x $REPO_DIR/base/betterlockscreen@.service;
+    systemctl enable betterlockscreen@$USER.servce;
+
 }
 
 polybar_install() {
     git clone https://github.com/polybar/polybar.git
+    cd polybar && mkdir build;
+    cd build && cmake ..;
+    make -j$(nproc);
+    cd $INSTALL_DIR;
 }
 
 google_chrome_install() {
@@ -95,7 +106,10 @@ vim_setup() {
     git clone git://github.com/altercation/vim-colors-solarized.git $VIM_PKG_DIR/vim-colors-solarized;
 }
 
-# Missing: light, virtualenv, betterlockscreen
+i3_install() {
+    xargs apt install -y < $REPO_DIR/poweruser_pkgs.txt;
+}
+
 software_install() {
     node_install;
     discord_install;
@@ -105,6 +119,21 @@ software_install() {
     vscode_install;
     deluge_install;
     postman_install;
+    virtualenv_install;
+}
+
+# TODO: Test this method
+poweruser_setup() {
+    poweruser_symlinks;
+    i3_install;
+    betterlockscreen_install;
+    light_install;
+}
+
+poweruser_symlinks() {
+    ln -sf $REPO_DIR/config/i3 ~/.config/i3;
+    ln -sf $REPO_DIR/config/polybar ~/.config/polybar;
+    ln -sf $REPO_DIR/config/screenlayout ~/.config/screenlayout;
 }
 
 symlink_setup() {
@@ -112,7 +141,6 @@ symlink_setup() {
     ln -sf $REPO_DIR/base/.vimrc ~/.vimrc;
     ln -sf $REPO_DIR/base/basic.zsh-theme ~/.oh-my-zsh/custom/themes/basic.zsh-theme
     ln -sf $REPO_DIR/base/settings.json ~/.config/Code/User/settings.json;
-    ln -sf $REPO_DIR/config ~/.config;
 }
 
 update_shell() {
@@ -133,13 +161,14 @@ main() {
 
     #mkdir -p $INSTALL_DIR;
     cd $INSTALL_DIR;
+    #software_install;
 
     if [[ "$ALL_FLAG" == 1 ]]; then
-        software_install;
+        poweruser_setup;
     fi
 
-    #symlink_setup || error "Unable to setup symlinks.";
-    #update_shell || error "Unable to update shell";
+    #symlink_setup;
+    #update_shell;
 
     echo "No errors. Hurray!";
     cd $REPO_DIR;
