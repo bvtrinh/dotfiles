@@ -7,6 +7,7 @@ autoconf
 compton
 zathura
 arandr
+xrandr
 build-essential
 clang
 cmake 
@@ -19,8 +20,9 @@ libxcb1-dev
 libxcb-util0-dev
 libxcb-randr0-dev
 libxcb-composite0-dev
-python-xcbgen
+python3-xcbgen
 xcb-proto
+libjsoncpp-dev
 libxcb-image0-dev
 libxcb-ewmh-dev
 libxcb-icccm4-dev

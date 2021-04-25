@@ -125,13 +125,13 @@ fonts_install() {
     mkdir -p $HOME_DIR/.local/share/fonts;
 
     wget -O weather-icons.zip https://github.com/erikflowers/weather-icons/archive/master.zip;
-    unzip weather-icons.zip;
+    unzip weather-icons.zip -d weather-icons;
     cd weather-icons && mv font/weathericons-regular-webfont.ttf $HOME_DIR/.local/share/fonts;
 
     cd $INSTALL_DIR;
     wget -O fontawesome.zip https://fontawesome.com/download;
-    unzip fontawesome.zip;
-    cd fontawesome &&  mv "Font Awesome 5*" $HOME_DIR/.local/share/fonts;
+    unzip fontawesome.zip -d fontawesome;
+    mv fontawesome/'Font Awesome 5*' $HOME_DIR/.local/share/fonts;
 
     fc-cache -f -v;
     cd $INSTALL_DIR;
