@@ -53,13 +53,15 @@ light_install() {
     make install;
 }
 
-# TODO: Install dependencies
 betterlockscreen_install() {
     git clone https://github.com/Raymo111/i3lock-color.git
     cd i3lock-color && ./install-i3lock-color.sh;
 
     git clone https://github.com/pavanjadhaw/betterlockscreen;
     cp betterlockscreen/betterlockscreen /usr/local/bin;
+
+    # Generate the lockscreen images
+    betterlockscreen -u $REPO_DIR/images/girl1.png;
 
     # Lock when closing laptop
     ln -sf $REPO_DIR/base/betterlockscreen@.service /etc/systemd/system;
@@ -68,12 +70,12 @@ betterlockscreen_install() {
 }
 
 polybar_install() {
-    # git clone https://github.com/polybar/polybar.git
-    # cd polybar && mkdir build;
-    # cd build && cmake ..;
-    # make -j$(nproc);
-    # cd $INSTALL_DIR;
-    fonts_install;
+    git clone https://github.com/polybar/polybar.git
+    cd polybar && mkdir build;
+    cd build && cmake ..;
+    make -j$(nproc);
+    cd $INSTALL_DIR;
+    #fonts_install;
 }
 
 google_chrome_install() {
@@ -114,11 +116,11 @@ i3_install() {
 }
 
 fonts_install() {
-    # git clone https://github.com/ryanoasis/nerd-fonts.git;
-    # cd nerd-fonts;
-    # ./install.sh DejaVuSansMono;
-    # ./install.sh Hack;
-    # ./install.sh SourceCodePro;
+    git clone https://github.com/ryanoasis/nerd-fonts.git;
+    cd nerd-fonts;
+    ./install.sh DejaVuSansMono;
+    ./install.sh Hack;
+    ./install.sh SourceCodePro;
 
     cd $INSTALL_DIR;
 
@@ -129,7 +131,7 @@ fonts_install() {
 
     cd $INSTALL_DIR;
     git clone https://github.com/FortAwesome/Font-Awesome.git
-    mv Font-Awesome/otfs/'Font Awesome 5*' $HOME/.local/share/fonts;
+    mv Font-Awesome/otfs/'Font Awesome 5'* $HOME/.local/share/fonts;
 
     fc-cache -f -v;
     cd $INSTALL_DIR;
@@ -147,10 +149,10 @@ software_install() {
     virtualenv_install;
 }
 
-# TODO: Test this method
+# TODO: test polybar, betterlockscreen, light
 poweruser_setup() {
     # poweruser_symlinks;
-    i3_install;
+    # i3_install;
     polybar_install;
     # betterlockscreen_install;
     # light_install;
