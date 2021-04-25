@@ -442,7 +442,7 @@ type = custom/script
 interval = 1
 format-prefix = " "
 format = <label>
-exec = python /home/ttrinh/software/polybar-spotify/spotify_status.py -f '{artist}: {song}'
+exec = python ~/.config/polybar/polybar-scripts/spotify_status.py -f '{artist}: {song}'
 format-underline = #1db954
 
 [module/light]

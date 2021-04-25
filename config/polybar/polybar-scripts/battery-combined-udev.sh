@@ -54,7 +54,7 @@ battery_print() {
         icon=""
     fi
 
-    echo "$icon $battery_percent%"
+    echo "$icon  $battery_percent%"
 }
 
 path_pid="/home/ttrinh/.config/polybar/polybar-scripts/battery-combined-udev.pid"
