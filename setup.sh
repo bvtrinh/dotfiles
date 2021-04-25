@@ -33,7 +33,7 @@ discord_install() {
 
 zoom_install() {
     wget -O zoom.deb https://zoom.us/client/latest/zoom_amd64.deb;
-    sudo apt install ./zoom.deb;
+    sudo apt install -y ./zoom.deb;
 }
 
 ngrok_install() {
@@ -44,7 +44,7 @@ ngrok_install() {
 
 light_install() {
     wget -O light.deb https://github.com/haikarainen/light/releases/download/v1.2/light_1.2_amd64.deb;
-    sudo apt install ./light.deb;
+    sudo apt install -y ./light.deb;
 }
 
 betterlockscreen_install() {
@@ -83,7 +83,7 @@ postman_install() {
 }
 
 deluge_install() {
-    sudo apt install software-properties-common;
+    sudo apt install -y software-properties-common;
     add-apt-repository -y ppa:deluge-team/stable;
     sudo apt install -y deluge;
 }
@@ -103,7 +103,7 @@ vim_setup() {
 
     # Install plugins
     git clone https://github.com/vim-airline/vim-airline $VIM_PKG_DIR/vim-airline; 
-    git clone git://github.com/altercation/vim-colors-solarized.git $VIM_PKG_DIR/vim-colors-solarized;
+    git clone https://github.com/altercation/vim-colors-solarized.git $VIM_PKG_DIR/vim-colors-solarized;
 }
 
 i3_install() {
@@ -177,8 +177,8 @@ update_shell() {
 
 main() {
     # Update, upgrade and install packages specified in $PACKAGES_FILE
-    sudo apt -y update && sudo apt -y upgrade;
-    xargs sudo apt -y install < $PACKAGES_FILE;
+    sudo apt update -y && sudo apt upgrade -y;
+    xargs sudo apt install -y < $PACKAGES_FILE;
     vim_setup;
 
     mkdir -p $INSTALL_DIR;
