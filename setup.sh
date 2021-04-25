@@ -129,7 +129,7 @@ fonts_install() {
     cd weather-icons && mv font/weathericons-regular-webfont.ttf $HOME_DIR/.local/share/fonts;
 
     cd $INSTALL_DIR;
-    wget -O fontawesome.zip https://fontawesome.com/download;
+    wget -O fontawesome.zip https://use.fontawesome.com/releases/v5.15.3/fontawesome-free-5.15.3-desktop.zip
     unzip fontawesome.zip -d fontawesome;
     mv fontawesome/'Font Awesome 5*' $HOME_DIR/.local/share/fonts;
 
