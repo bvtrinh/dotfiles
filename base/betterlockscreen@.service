@@ -1,8 +1,10 @@
 [Unit]
 Description = Lock screen when going to sleep/suspend
+Before=sleep.target
+Before=suspend.target
 
 [Service]
-User=ttrinh
+User=%I
 Type=simple
 Environment=DISPLAY=:0
 ExecStart=/usr/local/bin/betterlockscreen --lock

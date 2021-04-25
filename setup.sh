@@ -55,13 +55,16 @@ light_install() {
 
 # TODO: Install dependencies
 betterlockscreen_install() {
+    git clone https://github.com/Raymo111/i3lock-color.git
+    cd i3lock-color && ./install-i3lock-color.sh;
+
     git clone https://github.com/pavanjadhaw/betterlockscreen;
     cp betterlockscreen/betterlockscreen /usr/local/bin;
 
     # Lock when closing laptop
     ln -sf $REPO_DIR/base/betterlockscreen@.service /etc/systemd/system;
     chmod +x $REPO_DIR/base/betterlockscreen@.service;
-    systemctl enable betterlockscreen@$USER.servce;
+    systemctl enable betterlockscreen@$USER;
 
 }
 
