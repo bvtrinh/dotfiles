@@ -159,9 +159,9 @@ poweruser_setup() {
 }
 
 poweruser_symlinks() {
-    ln -sf $REPO_DIR/config/i3 ~/.config/i3;
-    ln -sf $REPO_DIR/config/polybar ~/.config/polybar;
-    ln -sf $REPO_DIR/config/screenlayout ~/.config/screenlayout;
+    ln -sf $REPO_DIR/config/i3 ~/.config;
+    ln -sf $REPO_DIR/config/polybar ~/.config;
+    ln -sf $REPO_DIR/config/screenlayout ~/.config;
 }
 
 symlink_setup() {
