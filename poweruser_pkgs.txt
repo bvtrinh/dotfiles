@@ -44,3 +44,4 @@ libxcb-util-dev
 libxkbcommon-dev 
 libxkbcommon-x11-dev 
 libjpeg-dev
+unifont

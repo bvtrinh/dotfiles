@@ -73,6 +73,7 @@ polybar_install() {
     cd build && cmake ..;
     make -j$(nproc);
     cd $INSTALL_DIR;
+    fonts_install;
 }
 
 google_chrome_install() {
@@ -111,10 +112,29 @@ vim_setup() {
 i3_install() {
     xargs sudo apt install -y < $REPO_DIR/poweruser_pkgs.txt;
 }
+
 fonts_install() {
     git clone https://github.com/ryanoasis/nerd-fonts.git;
     cd nerd-fonts;
-    DejaVu Sans Mono Nerd Font
+    ./install.sh DejaVuSansMono;
+    ./install.sh Hack;
+    ./install.sh SourceCodePro;
+
+    cd $INSTALL_DIR;
+
+    mkdir -p $HOME_DIR/.local/share/fonts;
+
+    wget -O weather-icons.zip https://github.com/erikflowers/weather-icons/archive/master.zip;
+    unzip weather-icons.zip;
+    cd weather-icons && mv font/weathericons-regular-webfont.ttf $HOME_DIR/.local/share/fonts;
+
+    cd $INSTALL_DIR;
+    wget -O fontawesome.zip https://fontawesome.com/download;
+    unzip fontawesome.zip;
+    cd fontawesome &&  mv "Font Awesome 5*" $HOME_DIR/.local/share/fonts;
+
+    fc-cache -f -v;
+    cd $INSTALL_DIR;
 }
 
 software_install() {
@@ -133,6 +153,7 @@ software_install() {
 poweruser_setup() {
     poweruser_symlinks;
     i3_install;
+    polybar_install;
     betterlockscreen_install;
     light_install;
 }
