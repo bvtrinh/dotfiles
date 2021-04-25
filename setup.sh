@@ -74,6 +74,7 @@ polybar_install() {
     cd polybar && mkdir build;
     cd build && cmake ..;
     make -j$(nproc);
+    ln -s $INSTALL_DIR/polybar/build/bin/polybar /usr/local/bin;
     cd $INSTALL_DIR;
     #fonts_install;
 }
@@ -94,7 +95,7 @@ deluge_install() {
 }
 
 virtualenv_install() {
-    python -m pip install --user virtualenv;
+    python3 -m pip install --user virtualenv;
 }
 
 vscode_install() {
