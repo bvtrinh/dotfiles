@@ -1,9 +1,7 @@
 #! /bin/bash
 
 # Setup constants
-# TODO: setup current user command?
-# i.e. sudo ./setup.sh -a -u $USER
-USER=ubuntu;
+USER=ttrinh;
 HOME=/home/$USER;
 REPO_DIR=$HOME/.dotfiles;
 INSTALL_DIR=$HOME/software;
@@ -72,7 +70,7 @@ polybar_install() {
     make -j$(nproc);
     ln -s $INSTALL_DIR/polybar/build/bin/polybar /usr/local/bin;
     cd $INSTALL_DIR;
-    #fonts_install;
+    fonts_install;
 }
 
 google_chrome_install() {
@@ -147,11 +145,11 @@ software_install() {
 }
 
 poweruser_setup() {
-    # poweruser_symlinks;
-    # i3_install;
+    poweruser_symlinks;
+    i3_install;
     polybar_install;
-    # betterlockscreen_install;
-    # light_install;
+    betterlockscreen_install;
+    light_install;
 }
 
 poweruser_symlinks() {
@@ -179,20 +177,20 @@ update_shell() {
 
 main() {
     # Update, upgrade and install packages specified in $PACKAGES_FILE
-    # sudo apt -y update && sudo apt -y upgrade;
-    # xargs sudo apt -y install < $PACKAGES_FILE;
-    # vim_setup;
+    sudo apt -y update && sudo apt -y upgrade;
+    xargs sudo apt -y install < $PACKAGES_FILE;
+    vim_setup;
 
     mkdir -p $INSTALL_DIR;
     cd $INSTALL_DIR;
-    # software_install;
+    software_install;
 
     if [[ "$ALL_FLAG" == 1 ]]; then
         poweruser_setup;
     fi
 
-    # symlink_setup;
-    # update_shell;
+    symlink_setup;
+    update_shell;
 
     echo "No errors. Hurray!";
     cd $REPO_DIR;
