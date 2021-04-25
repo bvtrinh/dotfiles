@@ -39,32 +39,28 @@ zoom_install() {
 }
 
 ngrok_install() {
-    wget -O ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
+    wget -O ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip;
     unzip ngrok.zip;
     mv ngrok /usr/local/bin/;
 }
 
 light_install() {
-    wget -O light-1.2.2.tar.gz https://github.com/haikarainen/light/archive/refs/tags/v1.2.2.tar.gz;
-    tar -xf light-1.2.2.tar.gz;
-    cd light-1.2.2;
-    ./autogen.sh;
-    ./configure && make;
-    make install;
+    wget -O light.deb https://github.com/haikarainen/light/releases/download/v1.2/light_1.2_amd64.deb;
+    sudo apt install ./light.deb;
 }
 
 betterlockscreen_install() {
-    git clone https://github.com/Raymo111/i3lock-color.git
+    git clone https://github.com/Raymo111/i3lock-color.git;
     cd i3lock-color && ./install-i3lock-color.sh;
 
     git clone https://github.com/pavanjadhaw/betterlockscreen;
-    cp betterlockscreen/betterlockscreen /usr/local/bin;
+    sudo cp betterlockscreen/betterlockscreen /usr/local/bin;
 
     # Generate the lockscreen images
     betterlockscreen -u $REPO_DIR/images/girl1.png;
 
     # Lock when closing laptop
-    ln -sf $REPO_DIR/base/betterlockscreen@.service /etc/systemd/system;
+    sudo ln -sf $REPO_DIR/base/betterlockscreen@.service /etc/systemd/system;
     chmod +x $REPO_DIR/base/betterlockscreen@.service;
     sudo systemctl enable betterlockscreen@$USER;
 }
@@ -150,7 +146,6 @@ software_install() {
     virtualenv_install;
 }
 
-# TODO: test polybar, betterlockscreen, light
 poweruser_setup() {
     # poweruser_symlinks;
     # i3_install;
