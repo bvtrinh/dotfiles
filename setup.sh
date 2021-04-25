@@ -6,7 +6,7 @@
 USER=ubuntu;
 HOME=/home/$USER;
 REPO_DIR=$HOME/.dotfiles;
-INSTALL_DIR=$HOME/tmp/install;
+INSTALL_DIR=$HOME/software;
 VSCODE_FILE=$REPO_DIR/vscode_extensions.txt;
 VIM_PKG_DIR=$HOME/.vim/bundle;
 PACKAGES_FILE=$REPO_DIR/packages_list.txt;
@@ -26,16 +26,16 @@ done
 
 node_install() {
     curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -;
-    apt install -y nodejs;
+    sudo apt install -y nodejs;
 }
 
 discord_install() {
-    snap install discord;
+    sudo snap install discord;
 }
 
 zoom_install() {
     wget -O zoom.deb https://zoom.us/client/latest/zoom_amd64.deb;
-    apt install ./zoom.deb;
+    sudo apt install ./zoom.deb;
 }
 
 ngrok_install() {
@@ -64,8 +64,7 @@ betterlockscreen_install() {
     # Lock when closing laptop
     ln -sf $REPO_DIR/base/betterlockscreen@.service /etc/systemd/system;
     chmod +x $REPO_DIR/base/betterlockscreen@.service;
-    systemctl enable betterlockscreen@$USER;
-
+    sudo systemctl enable betterlockscreen@$USER;
 }
 
 polybar_install() {
@@ -78,17 +77,17 @@ polybar_install() {
 
 google_chrome_install() {
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb;
-    apt install -y ./google-chrome-stable_current_amd64.deb;
+    sudo apt install -y ./google-chrome-stable_current_amd64.deb;
 }
 
 postman_install() {
-    snap install postman;
+    sudo snap install postman;
 }
 
 deluge_install() {
-    apt install software-properties-common;
+    sudo apt install software-properties-common;
     add-apt-repository -y ppa:deluge-team/stable;
-    apt install -y deluge;
+    sudo apt install -y deluge;
 }
 
 virtualenv_install() {
@@ -96,7 +95,7 @@ virtualenv_install() {
 }
 
 vscode_install() {
-    snap install --classic code;
+    sudo snap install --classic code;
     cat $VSCODE_FILE | xargs -L1 code --user-data-dir $USER --install-extension < $VSCODE_FILE;
 }
 
@@ -110,7 +109,12 @@ vim_setup() {
 }
 
 i3_install() {
-    xargs apt install -y < $REPO_DIR/poweruser_pkgs.txt;
+    xargs sudo apt install -y < $REPO_DIR/poweruser_pkgs.txt;
+}
+fonts_install() {
+    git clone https://github.com/ryanoasis/nerd-fonts.git;
+    cd nerd-fonts;
+    DejaVu Sans Mono Nerd Font
 }
 
 software_install() {
@@ -158,20 +162,20 @@ update_shell() {
 
 main() {
     # Update, upgrade and install packages specified in $PACKAGES_FILE
-    #apt -y update && apt -y upgrade;
-    #xargs apt -y install < $PACKAGES_FILE;
-    #vim_setup;
+    sudo apt -y update && sudo apt -y upgrade;
+    xargs sudo apt -y install < $PACKAGES_FILE;
+    vim_setup;
 
-    #mkdir -p $INSTALL_DIR;
+    mkdir -p $INSTALL_DIR;
     cd $INSTALL_DIR;
-    #software_install;
+    software_install;
 
     if [[ "$ALL_FLAG" == 1 ]]; then
         poweruser_setup;
     fi
 
-    #symlink_setup;
-    #update_shell;
+    symlink_setup;
+    update_shell;
 
     echo "No errors. Hurray!";
     cd $REPO_DIR;
