@@ -72,7 +72,7 @@ exec --no-startup-id compton -f --config ~/.config/compton/compton.conf -b
 exec --no-startup-id synclient PalmDetect=1 PalmMinWidth=3 PalmMinZ=0 MaxTapTime=0 VertScrollDelta=-114 VertEdgeScoll=0 HorizTwoFingerScroll=1
 
 # Wallpaper
-exec feh --bg-fill ~/Pictures/misaya_reiroukan.png
+exec feh --bg-fill ~/.dotfiles/images/anime1.png
 
 # Polybar
 exec_always --no-startup-id $HOME/.config/polybar/polybar-scripts/launch.sh
@@ -102,10 +102,10 @@ set $displayMode "Set display mode [h]ome [t]op [r]ight [l]aptop OR [N]etflix"
 bindsym $mod+x mode $displayMode
 mode $displayMode {
 
-    bindsym t exec ~/.config/screenlayout/top;
-    bindsym r exec ~/.config/screenlayout/right;
-    bindsym l exec ~/.config/screenlayout/laptop;
-    bindsym n exec google-chrome --new-window "https://www.netflix.com/browse"; exec google-chrome "www.google.ca"
+    bindsym t exec ~/.config/screenlayout/top.sh;
+    bindsym r exec ~/.config/screenlayout/right.sh;
+    bindsym l exec ~/.config/screenlayout/laptop.sh;
+    bindsym n exec google-chrome --new-window "https://www.netflix.com/browse";
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }

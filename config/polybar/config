@@ -451,7 +451,7 @@ interval = 1
 format-prefix =%{F#FFFFFF} %{F-}
 format = "<label>%"
 format-underline = #ff6a00
-exec = /usr/local/bin/light -G | awk '{print substr($0,1,length($0)-3)}'
+exec = /usr/bin/light -G | awk '{print substr($0,1,length($0)-3)}'
 
 [module/weather]
 type = custom/script
