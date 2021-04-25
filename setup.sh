@@ -68,11 +68,11 @@ betterlockscreen_install() {
 }
 
 polybar_install() {
-    git clone https://github.com/polybar/polybar.git
-    cd polybar && mkdir build;
-    cd build && cmake ..;
-    make -j$(nproc);
-    cd $INSTALL_DIR;
+    # git clone https://github.com/polybar/polybar.git
+    # cd polybar && mkdir build;
+    # cd build && cmake ..;
+    # make -j$(nproc);
+    # cd $INSTALL_DIR;
     fonts_install;
 }
 
@@ -114,24 +114,22 @@ i3_install() {
 }
 
 fonts_install() {
-    git clone https://github.com/ryanoasis/nerd-fonts.git;
-    cd nerd-fonts;
-    ./install.sh DejaVuSansMono;
-    ./install.sh Hack;
-    ./install.sh SourceCodePro;
+    # git clone https://github.com/ryanoasis/nerd-fonts.git;
+    # cd nerd-fonts;
+    # ./install.sh DejaVuSansMono;
+    # ./install.sh Hack;
+    # ./install.sh SourceCodePro;
 
     cd $INSTALL_DIR;
 
     mkdir -p $HOME_DIR/.local/share/fonts;
 
-    wget -O weather-icons.zip https://github.com/erikflowers/weather-icons/archive/master.zip;
-    unzip weather-icons.zip -d weather-icons;
+    git clone https://github.com/erikflowers/weather-icons.git;
     cd weather-icons && mv font/weathericons-regular-webfont.ttf $HOME_DIR/.local/share/fonts;
 
     cd $INSTALL_DIR;
-    wget -O fontawesome.zip https://use.fontawesome.com/releases/v5.15.3/fontawesome-free-5.15.3-desktop.zip
-    unzip fontawesome.zip -d fontawesome;
-    mv fontawesome/'Font Awesome 5*' $HOME_DIR/.local/share/fonts;
+    git clone https://github.com/FortAwesome/Font-Awesome.git
+    mv Font-Awesome/otfs/'Font Awesome 5*' $HOME_DIR/.local/share/fonts;
 
     fc-cache -f -v;
     cd $INSTALL_DIR;
@@ -151,11 +149,11 @@ software_install() {
 
 # TODO: Test this method
 poweruser_setup() {
-    poweruser_symlinks;
+    # poweruser_symlinks;
     i3_install;
     polybar_install;
-    betterlockscreen_install;
-    light_install;
+    # betterlockscreen_install;
+    # light_install;
 }
 
 poweruser_symlinks() {
@@ -183,9 +181,9 @@ update_shell() {
 
 main() {
     # Update, upgrade and install packages specified in $PACKAGES_FILE
-    sudo apt -y update && sudo apt -y upgrade;
-    xargs sudo apt -y install < $PACKAGES_FILE;
-    vim_setup;
+    # sudo apt -y update && sudo apt -y upgrade;
+    # xargs sudo apt -y install < $PACKAGES_FILE;
+    # vim_setup;
 
     mkdir -p $INSTALL_DIR;
     cd $INSTALL_DIR;
@@ -195,8 +193,8 @@ main() {
         poweruser_setup;
     fi
 
-    symlink_setup;
-    update_shell;
+    # symlink_setup;
+    # update_shell;
 
     echo "No errors. Hurray!";
     cd $REPO_DIR;
