@@ -190,8 +190,8 @@ main() {
         poweruser_setup;
     fi
 
-    symlink_setup;
     update_shell;
+    symlink_setup;
 
     echo "No errors. Hurray!";
     cd $REPO_DIR;
