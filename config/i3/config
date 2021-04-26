@@ -46,6 +46,9 @@ bindsym $sup+e exec nautilus
 # powerdown shortcut
 bindsym $ctrl+$sup+p exec poweroff
 
+# start gnome keyring
+exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=ssh,secrets,pkcs11
+
 # Run network manager on startup
 exec_always --no-startup-id nm-applet
 
