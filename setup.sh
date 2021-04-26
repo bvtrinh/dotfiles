@@ -51,6 +51,8 @@ betterlockscreen_install() {
     git clone https://github.com/Raymo111/i3lock-color.git;
     cd i3lock-color && ./install-i3lock-color.sh;
 
+    cd $INSTALL_DIR;
+
     git clone https://github.com/pavanjadhaw/betterlockscreen;
     sudo cp betterlockscreen/betterlockscreen /usr/local/bin;
 
@@ -61,6 +63,8 @@ betterlockscreen_install() {
     sudo ln -sf $REPO_DIR/base/betterlockscreen@.service /etc/systemd/system;
     chmod +x $REPO_DIR/base/betterlockscreen@.service;
     sudo systemctl enable betterlockscreen@$USER;
+
+    cd $INSTALL_DIR;
 }
 
 polybar_install() {
