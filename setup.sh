@@ -45,6 +45,7 @@ ngrok_install() {
 light_install() {
     wget -O light.deb https://github.com/haikarainen/light/releases/download/v1.2/light_1.2_amd64.deb;
     sudo apt install -y ./light.deb;
+    sudo usermod -a -G video $USER;
 }
 
 betterlockscreen_install() {
@@ -161,6 +162,7 @@ poweruser_symlinks() {
     ln -sf $REPO_DIR/config/i3 ~/.config;
     ln -sf $REPO_DIR/config/polybar ~/.config;
     ln -sf $REPO_DIR/config/screenlayout ~/.config;
+    ln -sf $REPO_DIR/config/compton/compton.conf ~/.config/compton/compton.conf;
 }
 
 symlink_setup() {
