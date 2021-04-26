@@ -68,12 +68,12 @@ betterlockscreen_install() {
 }
 
 polybar_install() {
-    git clone https://github.com/polybar/polybar.git
+    git clone https://github.com/polybar/polybar.git;
     git submodule update --init --recursive;
     cd polybar && mkdir build;
     cd build && cmake ..;
     make -j$(nproc);
-    ln -s $INSTALL_DIR/polybar/build/bin/polybar /usr/local/bin;
+    sudo ln -s $INSTALL_DIR/polybar/build/bin/polybar /usr/local/bin;
     cd $INSTALL_DIR;
     fonts_install;
 }
@@ -176,7 +176,7 @@ update_shell() {
     # zplugin
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
     # Need to logout for this to take effect
-    chsh -s /usr/bin/zsh "$USER" >/dev/null 2>&1;
+    sudo chsh -s /usr/bin/zsh "$USER" >/dev/null 2>&1;
 }
 
 
