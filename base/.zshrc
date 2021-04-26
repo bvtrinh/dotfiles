@@ -22,6 +22,7 @@ export LANG=en_US.UTF-8
 
 # ZSHRC Settings
 alias zshrc="vim ~/.zshrc"
+alias vimrc="vim ~/.vimrc"
 alias ss="source ~/.zshrc"
 alias ohmyzsh="vim  ~/.oh-my-zsh"
 alias gc="cd ~/Documents/Classes/"

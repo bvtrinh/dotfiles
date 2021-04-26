@@ -1,7 +1,6 @@
 {
   "workbench.colorTheme": "One Dark Pro",
   "workbench.iconTheme": "material-icon-theme",
-  "matlab.mlintpath": "/home/ttrinh/software/MATLAB/R2020a/bin/glnxa64/mlint",
   "editor.minimap.enabled": false,
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -41,18 +40,6 @@
       "args": ["-no-file-line-error", "%DOC%"]
     }
   ],
-  "[dart]": {
-    "editor.formatOnSave": true,
-    "editor.formatOnType": true,
-    "editor.rulers": [
-      80
-    ],
-    "editor.selectionHighlight": false,
-    "editor.suggest.snippetsPreventQuickSuggestions": false,
-    "editor.suggestSelection": "first",
-    "editor.tabCompletion": "onlySnippets",
-    "editor.wordBasedSuggestions": false
-  },
-  "dart.previewLsp": true,
-  "liveshare.authenticationProvider": "GitHub"
+  "liveshare.authenticationProvider": "GitHub",
+  "diffEditor.ignoreTrimWhitespace": false
 }
