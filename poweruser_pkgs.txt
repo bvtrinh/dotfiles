@@ -47,3 +47,6 @@ libxkbcommon-dev
 libxkbcommon-x11-dev 
 libjpeg-dev
 unifont
+lxappearance
+gtk-chtheme
+qt4-qtconfig

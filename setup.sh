@@ -113,6 +113,7 @@ vim_setup() {
 }
 
 i3_install() {
+    sudo add-apt-repository ppa:rock-core/qt4;
     xargs sudo apt install -y < $REPO_DIR/poweruser_pkgs.txt;
 }
 
