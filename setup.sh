@@ -73,7 +73,7 @@ polybar_install() {
     git submodule update --init --recursive;
     cd build && cmake ..;
     make -j$(nproc);
-    sudo ln -s $INSTALL_DIR/polybar/build/bin/polybar /usr/local/bin;
+    sudo ln -sf $INSTALL_DIR/polybar/build/bin/polybar /usr/local/bin;
     cd $INSTALL_DIR;
     fonts_install;
 }
