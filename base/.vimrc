@@ -1,4 +1,4 @@
-" Start pathogen - currently only using for Solarized
+" Start pathogen - for solarized, airline
 execute pathogen#infect()
 
 " Highlight syntax
@@ -7,9 +7,6 @@ execute pathogen#infect()
 if !exists("g:syntax_on")
     syntax enable
 endif
-
-" Add syntax highlighting for arm assembly files (.s)
-au BufNewFile,BufRead *.s,*.S set filetype=arm " arm = armv6/7
 
 " Each (auto) indent step is 4 spaces
 set shiftwidth=4
@@ -68,7 +65,7 @@ highlight SeeMe ctermfg=White ctermbg=Red
 match SeeMe /NOTE/
 
 " Set wrap length
-set textwidth=72
+set textwidth=100
 
 " Make comments auto wrap
 " c = auto-wrap comments using textwidth.

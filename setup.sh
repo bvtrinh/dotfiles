@@ -65,6 +65,7 @@ betterlockscreen_install() {
 
 polybar_install() {
     git clone https://github.com/polybar/polybar.git
+    git submodule update --init --recursive;
     cd polybar && mkdir build;
     cd build && cmake ..;
     make -j$(nproc);
