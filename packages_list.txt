@@ -15,3 +15,4 @@ libgl1-mesa-glx
 libegl1-mesa
 libxcb-xtest0
 gnome-tweak-tool
+openssh-server
