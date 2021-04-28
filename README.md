@@ -10,6 +10,8 @@ My current computer is a Thinkpad T470s.
 
 - git
 - text editor
+- for use with the polybar script `weather.sh`, an [OpenWeather](https://openweathermap.org/) API key is required
+  - file should be located in `./config/polybar/polybar-scripts`
 
 ## Running setup script
 
