@@ -40,6 +40,9 @@ alias ww="cd ~/Documents/work/fabcycle"
 alias gt="cd ~/.local/share/Trash/files"
 alias sqlite="sqlite3"
 
+# Path additions
+export PATH="$HOME/.config/composer/vendor/bin:$PATH"
+
 #    /usr/lib/postgresql/10/bin/pg_ctl -D /var/lib/postgresql/10/main -l logfile start
 
 # Python venvs

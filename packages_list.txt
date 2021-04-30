@@ -16,3 +16,9 @@ libegl1-mesa
 libxcb-xtest0
 gnome-tweak-tool
 openssh-server
+php
+libapache2-mod-php
+php-cli
+php-mbstring
+php-xml
+php-curl
