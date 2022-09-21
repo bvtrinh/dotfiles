@@ -6,6 +6,8 @@ It will also serve as a more streamlined way for me to setup any new dev compute
 
 My current computer is a Thinkpad T470s.
 
+<img src="./images/main-screen.png">
+
 ## Prerequisites for setup script
 
 - git
@@ -28,6 +30,7 @@ sudo true
 | Name                                                                                    | Description                                                                              |
 | --------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
 | [zsh](https://www.zsh.org/)                                                             | auto completion support and theming with [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh) |
+| [urxvt](https://manpages.ubuntu.com/manpages/xenial/man1/urxvt.1.html)                  | terminal emulator                                                                        |
 | [vim](https://github.com/vim/vim)                                                       | terminal editor                                                                          |
 | [solarized theme](https://github.com/altercation/vim-colors-solarized.git) (vim plugin) | vim editor theme                                                                         |
 | [airline](https://github.com/vim-airline/vim-airline) (vim plugin)                      | vim status bar                                                                           |
